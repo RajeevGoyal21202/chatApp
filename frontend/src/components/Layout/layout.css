@@ -1,0 +1,15 @@
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.logout{
+    padding-bottom:21px;
+    padding-right: 10px;
+    cursor: pointer;
+}
+.menu{
+    position:absolute;
+    top:70px;
+    right: 5px;
+}
