@@ -9,6 +9,7 @@ const registerController = async (req, res) => {
       success: true,
       message: "user Register Successfully",
       user: response.user,
+      token: response.token
     });
   } catch (error) {
     errorHandler(res, error);
@@ -17,17 +18,32 @@ const registerController = async (req, res) => {
 const signInController = async (req, res) => {
     try {
       const response = await authService.signInService(req);
-      return res.status(201).send({
+      return res.status(200).send({
         success: true,
         message: "user Logined Successfully",
         user: response.user,
+        token:response.token
       });
+      
     } catch (error) {
       errorHandler(res, error);
     }
   };
 
-
+const logoutController = async(req,res)=>{
+  try{
+    console.log("hello")
+    const response = await authService.logOutService(req);
+    return res.status(200).send({
+      success: true,
+      message: "user Logout Successfully",
+      user: response.user
+    });
+  }
+  catch(error){
+    errorHandler(res,error)
+  }
+}
 module.exports.authController = {
-    registerController,signInController
+    registerController,signInController,logoutController
 }

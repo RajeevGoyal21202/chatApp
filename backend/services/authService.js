@@ -49,7 +49,10 @@ const registerService = async(payload)=>{
         }
         const hashedPassword = await hashPassword(password);
         const newUser = await userModel.create({name:name,email:email,role:role,phone:phone,password:hashedPassword});
-        return {newUser};
+        const token = JWT.sign({ _id: newUser._id }, "CHATAPP", {
+          expiresIn: "7d",
+        });
+        return {newUser,token};
     }
     catch(error){
         console.log(error);
@@ -91,6 +94,11 @@ const signInService = async(payload)=>{
         const token = JWT.sign({ _id: user._id }, "CHATAPP", {
             expiresIn: "7d",
           });
+        
+          const statusUpdate = await userModel.findByIdAndUpdate(
+            user._id,
+            { status: "Online" },          // Specify the field and new value
+          );
           return { user, token };
     }
     catch(error){
@@ -99,8 +107,17 @@ const signInService = async(payload)=>{
     }
 } 
 
-
+const logOutService = async(payload)=>{
+  const id = payload.user._id
+  const user =  await userModel.findOne({_id:id});
+  console.log(user)
+  const statusUpdate = await userModel.findByIdAndUpdate(
+    user._id,
+    { status: "Offline" },          // Specify the field and new value
+  );
+  return statusUpdate
+}
 
 module.exports.authService ={
-    registerService,signInService
+    registerService,signInService,logOutService
 }

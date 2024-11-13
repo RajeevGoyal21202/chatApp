@@ -1,18 +1,45 @@
 import React, { useState } from 'react'
 import img1 from "../../assets/register.jpg"
-import  {Link} from "react-router-dom";
+import  {Link,useNavigate} from "react-router-dom";
+import axios from "axios"
 import style from "./style.css"
 const Signup = () => {
   const [name,setName]=useState("");
   const [email,setEmail]=useState("");
   const [phone,setPhone]=useState("");
   const [password,setPassword]=useState("");
-  const [role,setRole]=useState("");
+  const [role,setRole]=useState("Student");
   
-  const submit = () => {
-   
-    console.log(name,email,phone,password,role)
-  }
+  const navigate = useNavigate();
+  const submit = async (e) => {
+    e.preventDefault();
+    try {  
+      // Await the axios response
+      const res = await axios.post('http://localhost:8080/auth/register', {
+        name: name,
+        email: email,
+        phone: phone,
+        password: password,
+        role: role
+      });
+  
+      // Log the entire response to see details
+      console.log('Response:', res.status);
+
+      if(res.status === 201){
+        console.log("user register sucessfully")
+        navigate("/dashboard")
+      }
+      
+      // Optionally, return or handle the response data
+      return res.data;
+    }
+    catch (error) {
+      // Log any error that occurs during the request
+      console.log('Error during registration:', error.response.data.message);
+    }
+  };
+  
   return (
     <div className='main'>
 
