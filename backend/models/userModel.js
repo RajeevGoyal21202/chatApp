@@ -22,6 +22,12 @@ const UserSchema = new mongoose.Schema({
         type: String,
         enum : ['Teacher','Student','Institute'],
         default: 'Student'
+    },
+    status:{
+        type: String,
+        enum : ['Online','Offline'],
+        default: 'Offline'
+        
     }
 })
 

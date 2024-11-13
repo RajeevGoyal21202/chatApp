@@ -9,13 +9,13 @@
     width: 400px;
     height: 500px;
 }
-.MainBox{
+.LoginBox{
     display: flex;
     flex-direction: column;
     justify-content:space-evenly;
     gap: 4px;
     width: 400px;
-    height: 500px;
+    height: 300px;
     border: 1px solid black;
     
    
@@ -28,14 +28,7 @@
 .inputBox>input{
     width: 70%;
 }
-.selector{
-    display: flex;
-    width: 80%;
-    padding: 15px;
-    justify-content: center;
-    margin-left: 40px;
-   
-}
+
 .Submit{
     margin-left: 25px;
 }

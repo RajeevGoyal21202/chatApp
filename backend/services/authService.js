@@ -100,6 +100,7 @@ const signInService = async(payload)=>{
 } 
 
 
+
 module.exports.authService ={
     registerService,signInService
 }
