@@ -1,10 +1,25 @@
+
 .main{
     width: 100%;
     height: 100vh;
     display: flex; 
     justify-content: space-around;  
     align-items: center;
+   
+    background-image:url("../../assets/Vector.png");
 }
+.inputArea{
+    width: 50%;
+    text-align: center;
+    font-family:'Times New Roman', Times, serif;
+}
+.internalBox{
+    padding-top: 15px;
+    padding-left:15%;
+    padding-right:15%;
+}
+
+
 .sideImage{
     width: 400px;
     height: 500px;
@@ -23,19 +38,30 @@
 .inputBox{
     display: flex;
     width: 100%;
+    background-color: #F0EDFFCC;
     justify-content: space-evenly;
+    border-radius: 13px;
+    align-items: center;
+
 }
 .inputBox>input{
-    width: 70%;
+    padding: 20px;
+    background-color: #F0EDFFCC;
+    border: none;
+   
 }
 
 .Submit{
     margin-left: 25px;
+
 }
 .Submit>button{
-    width: 90%;
-    background-color: lightseagreen;
+    width: 30%;
     cursor: pointer;
+    background: linear-gradient(83.16deg, #00078A -5.26%, #3D44CA 95.28%);
+    border: none;
+    border-radius: 14px;
+    color: white;
     padding: 15px;
     margin-left: 10px;
 }
